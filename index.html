@@ -9,8 +9,8 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --bg:#0d0b08;--surface:#141108;--card:#1c1810;--border:#2c2218;
-  --accent:#c9a86c;--accent2:#e8c98a;--adim:rgba(201,168,108,0.1);
-  --text:#e8ddd0;--muted:#9a8a78;--dim:#5e504a;
+  --accent:#c9a86c;--accent2:#e8c98a;--adim:rgba(201,168,108,0.12);
+  --text:#f0e6d8;--muted:#c4b09a;--dim:#9a8a78;
 }
 html{scroll-behavior:smooth}
 body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);font-size:16px;line-height:1.7}
@@ -20,8 +20,6 @@ nav{position:sticky;top:0;z-index:100;background:rgba(13,11,8,0.93);backdrop-fil
 .nav-links{display:flex;gap:2rem;list-style:none}
 .nav-links a{font-size:0.78rem;color:var(--muted);text-decoration:none;letter-spacing:0.07em;text-transform:uppercase;transition:color 0.2s;cursor:pointer}
 .nav-links a:hover{color:var(--accent)}
-
-#main-content{display:block}
 
 section{max-width:900px;margin:0 auto;padding:5rem 2rem}
 hr.div{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto}
@@ -56,14 +54,14 @@ strong{color:var(--text);font-weight:500}
 .photo-wrap img{width:100%;height:100%;object-fit:cover;display:block}
 .photo-placeholder{color:var(--dim);font-size:0.8rem;text-align:center;padding:1rem}
 .tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.5rem}
-.tag{font-size:0.73rem;color:var(--accent);background:var(--adim);border:1px solid rgba(201,168,108,0.18);padding:0.22rem 0.65rem;border-radius:2rem}
+.tag{font-size:0.73rem;color:var(--accent);background:var(--adim);border:1px solid rgba(201,168,108,0.2);padding:0.22rem 0.65rem;border-radius:2rem}
 
 /* RESEARCH */
 .r-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem}
 .r-card{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:1.75rem;transition:border-color 0.2s}
 .r-card:hover{border-color:var(--accent)}
 .r-icon{font-size:1.1rem;margin-bottom:1rem;display:block;color:var(--accent)}
-.r-card p{font-size:0.86rem;line-height:1.7}
+.r-card p{font-size:0.86rem;line-height:1.7;color:var(--muted)}
 
 /* PUBLICATIONS */
 .pub-list{display:flex;flex-direction:column;gap:2.2rem}
@@ -71,7 +69,7 @@ strong{color:var(--text);font-weight:500}
 .pub:hover{border-color:var(--accent)}
 .badges{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.5rem}
 .badge{font-size:0.68rem;letter-spacing:0.06em;padding:0.18rem 0.55rem;border-radius:2px;font-weight:500;text-transform:uppercase}
-.b-award{background:rgba(201,168,108,0.14);color:var(--accent);border:1px solid rgba(201,168,108,0.25)}
+.b-award{background:rgba(201,168,108,0.14);color:var(--accent2);border:1px solid rgba(201,168,108,0.3)}
 .b-venue{background:var(--card);color:var(--muted);border:1px solid var(--border)}
 .pub-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:400;color:var(--text);line-height:1.4;margin-bottom:0.4rem}
 .pub-authors{font-size:0.84rem;color:var(--muted);margin-bottom:0.25rem}
@@ -81,7 +79,7 @@ strong{color:var(--text);font-weight:500}
 .pub-link{font-size:0.75rem;letter-spacing:0.04em;color:var(--accent);text-transform:uppercase}
 
 /* BLOG LIST */
-.blog-list{display:flex;flex-direction:column;gap:0}
+.blog-list{display:flex;flex-direction:column}
 .blog-item{border-top:1px solid var(--border);padding:2rem 0;display:flex;justify-content:space-between;align-items:center;gap:2rem;cursor:pointer;transition:border-color 0.2s}
 .blog-item:last-child{border-bottom:1px solid var(--border)}
 .blog-item:hover .bi-title{color:var(--accent)}
@@ -97,11 +95,14 @@ strong{color:var(--text);font-weight:500}
 .post-nav{position:sticky;top:0;z-index:100;background:rgba(13,11,8,0.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;justify-content:space-between;align-items:center;height:62px}
 .back-btn{font-size:0.78rem;color:var(--muted);letter-spacing:0.07em;text-transform:uppercase;cursor:pointer;background:none;border:none;font-family:'Inter',sans-serif;display:flex;align-items:center;gap:0.5rem;transition:color 0.2s}
 .back-btn:hover{color:var(--accent)}
+.share-btn{font-size:0.78rem;color:var(--dim);letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;background:none;border:1px solid var(--border);font-family:'Inter',sans-serif;padding:0.3rem 0.8rem;border-radius:3px;transition:all 0.2s}
+.share-btn:hover{color:var(--accent);border-color:var(--accent)}
+.share-btn.copied{color:var(--accent);border-color:var(--accent)}
 .post-body{max-width:680px;margin:0 auto;padding:5rem 2rem}
 .post-label{font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;display:block}
-.post-body h1{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.2;margin-bottom:1rem}
+.post-body h1{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.2;margin-bottom:1rem;color:var(--text)}
 .post-date{font-size:0.8rem;color:var(--dim);margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid var(--border)}
-.post-body h2{font-size:1.3rem;margin:2.5rem 0 0.75rem;color:var(--text)}
+.post-body h2{font-size:1.3rem;margin:2.5rem 0 0.75rem;color:var(--text);font-family:'Playfair Display',serif;font-weight:400}
 .post-body p{font-size:1rem;line-height:1.85;color:var(--muted);margin-bottom:1.4rem}
 .post-body em{color:var(--text);font-style:italic}
 
@@ -109,7 +110,7 @@ strong{color:var(--text);font-weight:500}
 .extra-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
 .extra-card{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:1.25rem 1.5rem}
 .extra-card h3{font-size:0.9rem;font-family:'Inter',sans-serif;font-weight:500;color:var(--text);margin-bottom:0.4rem}
-.extra-card p{font-size:0.83rem;margin:0}
+.extra-card p{font-size:0.83rem;margin:0;color:var(--muted)}
 
 /* CONTACT */
 #contact{text-align:center}
@@ -131,7 +132,6 @@ footer{border-top:1px solid var(--border);text-align:center;padding:2rem;font-si
 </head>
 <body>
 
-<!-- MAIN SITE -->
 <div id="main-content">
 <nav>
   <span class="nav-logo" onclick="showMain()">RT</span>
@@ -251,17 +251,15 @@ footer{border-top:1px solid var(--border);text-align:center;padding:2rem;font-si
   <span class="sec-label">Blog</span>
   <h2>Writing About My Work</h2>
   <div class="blog-list">
-
-    <div class="blog-item" onclick="openPost('post1')">
+    <div class="blog-item" onclick="openPost('remembrance')">
       <div class="bi-left">
-        <div class="bi-meta">April 2026 &nbsp;·&nbsp; CHI '26</div>
+        <div class="bi-meta">April 2026 &nbsp;·&nbsp; CHI '26 &nbsp;·&nbsp; ★ Best Paper</div>
         <div class="bi-title">Who Gets to Decide How You Are Remembered?</div>
         <p class="bi-excerpt">When we started asking older adults how they wanted to be remembered after death, we expected them to talk about themselves. What we got was something far more interesting.</p>
       </div>
       <span class="bi-arrow">→</span>
     </div>
-
-    <div class="blog-item" onclick="openPost('post2')">
+    <div class="blog-item" onclick="openPost('data-planning')">
       <div class="bi-left">
         <div class="bi-meta">July 2025 &nbsp;·&nbsp; DIS '25</div>
         <div class="bi-title">Your Data Will Outlive You. Have You Thought About That?</div>
@@ -269,8 +267,7 @@ footer{border-top:1px solid var(--border);text-align:center;padding:2rem;font-si
       </div>
       <span class="bi-arrow">→</span>
     </div>
-
-    <div class="blog-item" onclick="openPost('post3')">
+    <div class="blog-item" onclick="openPost('emoji-colourism')">
       <div class="bi-left">
         <div class="bi-meta">2025 &nbsp;·&nbsp; BCS HCI</div>
         <div class="bi-title">The Emoji You Pick Is Not Neutral — Especially If You're Indian</div>
@@ -278,7 +275,6 @@ footer{border-top:1px solid var(--border);text-align:center;padding:2rem;font-si
       </div>
       <span class="bi-arrow">→</span>
     </div>
-
   </div>
 </section>
 
@@ -288,22 +284,10 @@ footer{border-top:1px solid var(--border);text-align:center;padding:2rem;font-si
   <span class="sec-label">Extra-Curricular</span>
   <h2>Beyond the Lab</h2>
   <div class="extra-grid">
-    <div class="extra-card">
-      <h3>Poetry &amp; Writing</h3>
-      <p>Published poet and open-mic performer.</p>
-    </div>
-    <div class="extra-card">
-      <h3>Music</h3>
-      <p>Ukulele, keyboard, and drums.</p>
-    </div>
-    <div class="extra-card">
-      <h3>Painting</h3>
-      <p>Acrylic painting, mostly still life.</p>
-    </div>
-    <div class="extra-card">
-      <h3>Salsa Dancing</h3>
-      <p>Learning with my partner.</p>
-    </div>
+    <div class="extra-card"><h3>Poetry &amp; Writing</h3><p>Published poet and open-mic performer.</p></div>
+    <div class="extra-card"><h3>Music</h3><p>Ukulele, keyboard, and drums.</p></div>
+    <div class="extra-card"><h3>Painting</h3><p>Acrylic painting, mostly still life.</p></div>
+    <div class="extra-card"><h3>Salsa Dancing</h3><p>Learning with my partner.</p></div>
   </div>
 </section>
 
@@ -327,69 +311,70 @@ footer{border-top:1px solid var(--border);text-align:center;padding:2rem;font-si
 <!-- BLOG POST PAGE -->
 <div id="blog-post">
   <div class="post-nav">
-    <button class="back-btn" onclick="showMain()">← Back</button>
-    <span style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--dim)">RT</span>
+    <button class="back-btn" onclick="showMain()">← All posts</button>
+    <button class="share-btn" id="share-btn" onclick="copyLink()">Copy link</button>
   </div>
   <div class="post-body" id="post-body-content"></div>
+  <div style="max-width:680px;margin:0 auto;padding:0 2rem 5rem;border-top:1px solid var(--border);padding-top:2rem">
+    <p style="font-size:0.85rem;color:var(--dim)">← <span style="cursor:pointer;color:var(--muted)" onclick="showMain()">Back to all posts</span></p>
+  </div>
 </div>
 
 <script>
 var posts = {
-  post1: {
-    label: 'CHI 2026 · Best Paper',
+  'remembrance': {
+    label: 'CHI 2026 · Best Paper Award',
     title: 'Who Gets to Decide How You Are Remembered?',
     date: 'April 2026',
-    body: `
-      <p>This post is about our CHI 2026 Best Paper: <em>Crafting Remembrance Beyond the Self</em>. It is also about a surprise.</p>
-      <h2>The assumption we started with</h2>
-      <p>When you study end-of-life planning, it is easy to assume people are primarily concerned with how <em>they</em> will be remembered. Their own story, their own image, their own legacy. That was our starting assumption when we began interviewing 14 older adults about their digital and material artifacts.</p>
-      <p>We were wrong — or at least, incomplete.</p>
-      <h2>What older adults actually told us</h2>
-      <p>As participants engaged in imagining their post-mortem selves, the subject of remembrance kept expanding beyond the individual. Connie wanted to preserve her own memories, yes — but also her father's World War II footage and her grandfather's newspaper clipping from a small town in Louisiana. Sue showed us drawings made by her granddaughters, and told us the artifacts mattered not because of what they said about her, but because her granddaughters might one day look at them to remember <em>themselves</em>.</p>
-      <p>Individuals weren't just planning their own legacy. They were positioning themselves as one link in a generational chain — holding their ancestors and their descendants in the same breath.</p>
-      <h2>The role of artifacts</h2>
-      <p>Artifacts emerged as central to this work — not just as passive containers, but as active mediators of meaning. A driver's license spanning 20 years became a record of gradual aging. A collection of emails from "different times in my life" became a temporal archive. A breadbasket from a grandparent's generation embodied a relational history that no digital record could replicate.</p>
-      <p>Participants were also navigating physical-versus-digital storage with real care. Physical artifacts felt like anchors to the past — handwriting brings "[ancestors] closer to you," one participant told us. But digital formats offered longevity and searchability. One participant wanted to store digitized artifacts in a bank vault alongside her grandmother's jewelry, treating data as heirloom.</p>
-      <h2>What this means for design</h2>
-      <p>Current legacy platforms assume a single subject of remembrance: the deceased. Our work suggests the subject is more plural, more fluid, more generationally entangled. Design needs to account for narrative ecosystems where past, present, and future memories co-exist — not a single linear story, but a web of intertwined lives.</p>
-    `
+    body: `<p>This post is about our CHI 2026 Best Paper: <em>Crafting Remembrance Beyond the Self</em>. It is also about a surprise.</p>
+<h2>The assumption we started with</h2>
+<p>When you study end-of-life planning, it is easy to assume people are primarily concerned with how <em>they</em> will be remembered. Their own story, their own image, their own legacy. That was our starting assumption when we began interviewing 14 older adults about their digital and material artifacts.</p>
+<p>We were wrong — or at least, incomplete.</p>
+<h2>What older adults actually told us</h2>
+<p>As participants engaged in imagining their post-mortem selves, the subject of remembrance kept expanding beyond the individual. Connie wanted to preserve her own memories, yes — but also her father's World War II footage and her grandfather's newspaper clipping from a small town in Louisiana. Sue showed us drawings made by her granddaughters, and told us the artifacts mattered not because of what they said about her, but because her granddaughters might one day look at them to remember <em>themselves</em>.</p>
+<p>Individuals weren't just planning their own legacy. They were positioning themselves as one link in a generational chain — holding their ancestors and their descendants in the same breath.</p>
+<h2>The role of artifacts</h2>
+<p>Artifacts emerged as central to this work — not just as passive containers, but as active mediators of meaning. A driver's license spanning 20 years became a record of gradual aging. A collection of emails from "different times in my life" became a temporal archive. A breadbasket from a grandparent's generation embodied a relational history that no digital record could replicate.</p>
+<p>Participants were also navigating physical-versus-digital storage with real care. Physical artifacts felt like anchors to the past — handwriting brings "[ancestors] closer to you," one participant told us. But digital formats offered longevity and searchability. One participant wanted to store digitized artifacts in a bank vault alongside her grandmother's jewelry, treating data as heirloom.</p>
+<h2>What this means for design</h2>
+<p>Current legacy platforms assume a single subject of remembrance: the deceased. Our work suggests the subject is more plural, more fluid, more generationally entangled. Design needs to account for narrative ecosystems where past, present, and future memories co-exist — not a single linear story, but a web of intertwined lives.</p>`
   },
-  post2: {
+  'data-planning': {
     label: 'DIS 2025',
     title: 'Your Data Will Outlive You. Have You Thought About That?',
     date: 'July 2025',
-    body: `
-      <p>This post is about our DIS 2025 paper on older adults' preferences for end-of-life data planning.</p>
-      <h2>A blind spot in end-of-life planning</h2>
-      <p>We interviewed 16 older adults — all frequent users of digital technology — about what they wanted to happen to their data after they died. Seven had already done some form of end-of-life planning: writing wills, appointing heirs, identifying executors. And yet, when we asked about their digital data specifically, almost none had thought about it. One participant had just attended an end-of-life planning workshop. Data wasn't mentioned once in the curriculum.</p>
-      <p>This gap felt significant. These are people with iPhones, Facebook profiles, fitness trackers, Gmail accounts — decades of accumulated digital life — and yet their planning instincts stopped at the physical world.</p>
-      <h2>What surprised us</h2>
-      <p>Once prompted, participants had remarkably nuanced preferences. Health data generated unexpected enthusiasm: multiple participants wanted their medical histories and fitness data donated for research — imagining it as a gift to future generations. One participant, an avid marathon runner, wanted his step counts and heart rate data to help researchers understand longevity. Another participant, who had documented his travels extensively through photographs, wanted his lifetime of photos donated to a historical archive.</p>
-      <p>Others were more cautious. Changing social norms worried several people: what reads as ordinary language today might look offensive to their children in twenty years. The inability to add context to old posts — to explain what a photo really meant — created real anxiety.</p>
-      <h2>Technology changes. Your data doesn't.</h2>
-      <p>One of the most striking themes was participants' awareness of technological obsolescence. These are people who watched floppy disks, VHS tapes, and CDs become irrelevant in their lifetimes. They were deeply skeptical about whether digital platforms would reliably preserve their data for decades. Some stored family photos on two cloud services simultaneously. Others were printing paper backups of important messages.</p>
-      <p>This is a design problem as much as a personal one. If people don't trust digital infrastructure to last long enough to matter, how do we build systems that are credibly durable?</p>
-    `
+    body: `<p>This post is about our DIS 2025 paper on older adults' preferences for end-of-life data planning.</p>
+<h2>A blind spot in end-of-life planning</h2>
+<p>We interviewed 16 older adults — all frequent users of digital technology — about what they wanted to happen to their data after they died. Seven had already done some form of end-of-life planning: writing wills, appointing heirs, identifying executors. And yet, when we asked about their digital data specifically, almost none had thought about it. One participant had just attended an end-of-life planning workshop. Data wasn't mentioned once in the curriculum.</p>
+<p>This gap felt significant. These are people with iPhones, Facebook profiles, fitness trackers, Gmail accounts — decades of accumulated digital life — and yet their planning instincts stopped at the physical world.</p>
+<h2>What surprised us</h2>
+<p>Once prompted, participants had remarkably nuanced preferences. Health data generated unexpected enthusiasm: multiple participants wanted their medical histories and fitness data donated for research — imagining it as a gift to future generations. One participant, an avid marathon runner, wanted his step counts and heart rate data to help researchers understand longevity. Another participant, who had documented his travels through photographs, wanted his lifetime of photos donated to a historical archive.</p>
+<p>Others were more cautious. Changing social norms worried several people: what reads as ordinary language today might look offensive to their children in twenty years. The inability to add context to old posts — to explain what a photo really meant — created real anxiety.</p>
+<h2>Technology changes. Your data doesn't.</h2>
+<p>One of the most striking themes was participants' awareness of technological obsolescence. These are people who watched floppy disks, VHS tapes, and CDs become irrelevant in their lifetimes. They were deeply skeptical about whether digital platforms would reliably preserve their data for decades. Some stored family photos on two cloud services simultaneously. Others were printing paper backups of important messages.</p>
+<p>This is a design problem as much as a personal one. If people don't trust digital infrastructure to last long enough to matter, how do we build systems that are credibly durable?</p>`
   },
-  post3: {
+  'emoji-colourism': {
     label: 'BCS HCI 2025',
-    title: 'The Emoji You Pick Is Not Neutral — Especially If You\'re Indian',
+    title: "The Emoji You Pick Is Not Neutral — Especially If You're Indian",
     date: '2025',
-    body: `
-      <p>This post is about our BCS HCI 2025 paper: <em>Digital Colourism? Understanding Emoji Skin Tone Preferences Among Indian-Origin Users</em>.</p>
-      <h2>Why this question matters</h2>
-      <p>When Unicode introduced skin tone modifiers for emoji in 2015, the goal was representation — to make these tiny images reflect human diversity rather than defaulting to a yellow "neutral." What research has since shown is that yellow carries meaning: it is widely associated with whiteness, not neutrality. Almost all of that research has been conducted with North American and European participants.</p>
-      <p>We wanted to understand what this looks like for Indian-origin users — a population for whom skin complexion is not just a personal trait but a socially charged one, shaped by centuries of colourism.</p>
-      <h2>What we found</h2>
-      <p>We surveyed 94 Indian-origin users. The most striking finding was gendered. Women — regardless of self-perceived skin tone — were significantly more likely to choose emoji skin tones matching their own and to place more importance on having diverse options. Men with lighter perceived skin tones were much more likely to default to yellow.</p>
-      <p>This makes sense in context. Colourism in South Asia disproportionately affects women — in marriage markets, workplaces, media. Women have more at stake in how skin tone is represented, even digitally. Yet they also navigate a tension: while women were more likely to associate social benefits with fair skin tones, they were more enthusiastic about representing their own skin tone authentically.</p>
-      <h2>Designing for "neutrality" is not neutral</h2>
-      <p>The yellow emoji default is often defended as neutral — a skin tone that belongs to nobody. But if yellow reads as white to many users, then defaulting to yellow is not neutrality; it is a choice that centres one identity over others. This is a preliminary study, and it opens questions that deserve more attention as HCI grapples with representation and what it means to design for everyone.</p>
-    `
+    body: `<p>This post is about our BCS HCI 2025 paper: <em>Digital Colourism? Understanding Emoji Skin Tone Preferences Among Indian-Origin Users</em>.</p>
+<h2>Why this question matters</h2>
+<p>When Unicode introduced skin tone modifiers for emoji in 2015, the goal was representation — to make these tiny images reflect human diversity rather than defaulting to a yellow "neutral." What research has since shown is that yellow carries meaning: it is widely associated with whiteness, not neutrality. Almost all of that research has been conducted with North American and European participants.</p>
+<p>We wanted to understand what this looks like for Indian-origin users — a population for whom skin complexion is not just a personal trait but a socially charged one, shaped by centuries of colourism.</p>
+<h2>What we found</h2>
+<p>We surveyed 94 Indian-origin users. The most striking finding was gendered. Women — regardless of self-perceived skin tone — were significantly more likely to choose emoji skin tones matching their own and to place more importance on having diverse options. Men with lighter perceived skin tones were much more likely to default to yellow.</p>
+<p>This makes sense in context. Colourism in South Asia disproportionately affects women — in marriage markets, workplaces, media. Women have more at stake in how skin tone is represented, even digitally. Yet they also navigate a tension: while women were more likely to associate social benefits with fair skin tones, they were more enthusiastic about representing their own skin tone authentically.</p>
+<h2>Designing for "neutrality" is not neutral</h2>
+<p>The yellow emoji default is often defended as neutral — a skin tone that belongs to nobody. But if yellow reads as white to many users, then defaulting to yellow is not neutrality; it is a choice that centres one identity over others. This is a preliminary study, and it opens questions that deserve more attention as HCI grapples with representation and what it means to design for everyone.</p>`
   }
 };
 
+var currentPost = null;
+
 function openPost(id) {
+  if (!posts[id]) return;
+  currentPost = id;
   var p = posts[id];
   document.getElementById('post-body-content').innerHTML =
     '<span class="post-label">' + p.label + '</span>' +
@@ -398,14 +383,44 @@ function openPost(id) {
     p.body;
   document.getElementById('main-content').style.display = 'none';
   document.getElementById('blog-post').style.display = 'block';
+  document.getElementById('share-btn').textContent = 'Copy link';
+  document.getElementById('share-btn').classList.remove('copied');
+  history.pushState({post: id}, '', '#' + id);
   window.scrollTo(0, 0);
 }
 
 function showMain() {
   document.getElementById('blog-post').style.display = 'none';
   document.getElementById('main-content').style.display = 'block';
+  currentPost = null;
+  history.pushState({}, '', window.location.pathname);
   window.scrollTo(0, 0);
 }
+
+function copyLink() {
+  var url = window.location.origin + window.location.pathname + '#' + currentPost;
+  navigator.clipboard.writeText(url).then(function() {
+    var btn = document.getElementById('share-btn');
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(function(){ btn.textContent='Copy link'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+window.addEventListener('popstate', function(e) {
+  var hash = window.location.hash.replace('#','');
+  if (hash && posts[hash]) {
+    openPost(hash);
+  } else {
+    document.getElementById('blog-post').style.display = 'none';
+    document.getElementById('main-content').style.display = 'block';
+  }
+});
+
+window.addEventListener('DOMContentLoaded', function() {
+  var hash = window.location.hash.replace('#','');
+  if (hash && posts[hash]) openPost(hash);
+});
 </script>
 </body>
 </html>
