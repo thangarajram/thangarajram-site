@@ -1,47 +1,384 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ram Thangaraj | About</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ram Thangaraj — HCI Researcher</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d0b08;--surface:#141108;--card:#1c1810;--border:#2c2218;
+  --accent:#c9a86c;--accent2:#e8c98a;--adim:rgba(201,168,108,0.1);
+  --text:#e8ddd0;--muted:#9a8a78;--dim:#5e504a;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);font-size:16px;line-height:1.7}
+
+nav{position:sticky;top:0;z-index:100;background:rgba(13,11,8,0.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;justify-content:space-between;align-items:center;height:62px}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--text);text-decoration:none}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:0.78rem;color:var(--muted);text-decoration:none;letter-spacing:0.07em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--accent)}
+
+section{max-width:900px;margin:0 auto;padding:5rem 2rem}
+hr.div{border:none;border-top:1px solid var(--border);max-width:900px;margin:0 auto}
+.sec-label{display:block;font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+h1,h2,h3{font-family:'Playfair Display',serif;font-weight:400}
+h1{font-size:clamp(2.6rem,6vw,4.2rem);line-height:1.12;color:var(--text)}
+h2{font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:2.5rem;color:var(--text)}
+h3{font-size:1.08rem;color:var(--text);margin-bottom:0.4rem}
+p{color:var(--muted);margin-bottom:1rem}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+strong{color:var(--text);font-weight:500}
+
+/* HERO */
+#hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center;padding:6rem 2rem 4rem}
+.hero-greeting{font-size:1rem;color:var(--muted);margin-bottom:0.75rem;font-weight:300;letter-spacing:0.02em}
+.hero-name-row{display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.hero-name-row h1{margin:0}
+.hero-name-row h1 em{color:var(--accent);font-style:italic}
+.formal-name{font-size:0.78rem;color:var(--dim);letter-spacing:0.04em;font-family:'Inter',sans-serif;font-style:italic;padding-top:0.25rem}
+.hero-sub{font-size:1.05rem;color:var(--muted);max-width:550px;margin-bottom:2.5rem;line-height:1.85}
+.ctas{display:flex;gap:1rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:0.6rem 1.4rem;font-size:0.82rem;font-family:'Inter',sans-serif;letter-spacing:0.04em;border-radius:3px;cursor:pointer;transition:all 0.2s;text-decoration:none!important}
+.btn-p{background:var(--accent);color:#1a1208;font-weight:500}
+.btn-p:hover{background:var(--accent2)}
+.btn-s{background:transparent;color:var(--text);border:1px solid var(--border)}
+.btn-s:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:2fr 1fr;gap:4rem;align-items:start}
+.photo-wrap{width:100%;aspect-ratio:3/4;background:var(--card);border:1px solid var(--border);border-radius:4px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.photo-wrap img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-placeholder{color:var(--dim);font-size:0.8rem;text-align:center;padding:1rem}
+.tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.5rem}
+.tag{font-size:0.73rem;color:var(--accent);background:var(--adim);border:1px solid rgba(201,168,108,0.18);padding:0.22rem 0.65rem;border-radius:2rem}
+
+/* RESEARCH */
+.r-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem}
+.r-card{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:1.75rem;transition:border-color 0.2s}
+.r-card:hover{border-color:var(--accent)}
+.r-icon{font-size:1.1rem;margin-bottom:1rem;display:block;color:var(--accent)}
+.r-card p{font-size:0.86rem;line-height:1.7}
+
+/* PUBLICATIONS */
+.pub-list{display:flex;flex-direction:column;gap:2.2rem}
+.pub{border-left:2px solid var(--border);padding-left:1.5rem;transition:border-color 0.2s}
+.pub:hover{border-color:var(--accent)}
+.badges{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.5rem}
+.badge{font-size:0.68rem;letter-spacing:0.06em;padding:0.18rem 0.55rem;border-radius:2px;font-weight:500;text-transform:uppercase}
+.b-award{background:rgba(201,168,108,0.14);color:var(--accent);border:1px solid rgba(201,168,108,0.25)}
+.b-venue{background:var(--card);color:var(--muted);border:1px solid var(--border)}
+.pub-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:400;color:var(--text);line-height:1.4;margin-bottom:0.4rem}
+.pub-authors{font-size:0.84rem;color:var(--muted);margin-bottom:0.25rem}
+.pub-authors .me{color:var(--text);font-weight:500}
+.pub-meta{font-size:0.8rem;color:var(--dim)}
+.pub-links{display:flex;gap:1rem;margin-top:0.6rem}
+.pub-link{font-size:0.75rem;letter-spacing:0.04em;color:var(--accent);text-transform:uppercase}
+
+/* BLOG */
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem}
+.blog-card{background:var(--card);border:1px solid var(--border);border-radius:4px;overflow:hidden;transition:border-color 0.2s}
+.blog-card:hover{border-color:rgba(201,168,108,0.4)}
+.bc-head{background:var(--surface);padding:1.25rem 1.5rem;border-bottom:1px solid var(--border)}
+.blog-date{font-size:0.72rem;color:var(--dim);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.5rem}
+.bc-title{font-family:'Playfair Display',serif;font-size:1.02rem;font-weight:400;color:var(--text);line-height:1.4;margin:0}
+.bc-body{padding:1.25rem 1.5rem}
+.bc-excerpt{font-size:0.86rem;line-height:1.68;margin-bottom:1rem}
+.read-more{font-size:0.75rem;color:var(--accent);text-transform:uppercase;letter-spacing:0.06em;cursor:pointer;background:none;border:none;padding:0;font-family:'Inter',sans-serif}
+.blog-full{display:none;padding:1.5rem;border-top:1px solid var(--border);background:var(--bg)}
+.blog-full.open{display:block}
+.blog-full p{font-size:0.9rem;line-height:1.82;color:var(--muted);margin-bottom:1.1rem}
+.blog-full h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:400;color:var(--text);margin:1.4rem 0 0.5rem}
+
+/* EXTRAS */
+.extra-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+.extra-card{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:1.25rem 1.5rem}
+.extra-card h3{font-size:0.9rem;font-family:'Inter',sans-serif;font-weight:500;color:var(--text);margin-bottom:0.4rem}
+.extra-card p{font-size:0.83rem;margin:0}
+
+/* CONTACT */
+#contact{text-align:center}
+#contact h2{margin-bottom:0.5rem}
+.contact-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:2rem}
+.c-link{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--muted);border:1px solid var(--border);padding:0.6rem 1.2rem;border-radius:3px;text-decoration:none!important;transition:all 0.2s}
+.c-link:hover{color:var(--accent);border-color:var(--accent)}
+
+footer{border-top:1px solid var(--border);text-align:center;padding:2rem;font-size:0.78rem;color:var(--dim)}
+
+@media(max-width:700px){
+  .about-grid{grid-template-columns:1fr}
+  .photo-wrap{max-width:220px}
+  .nav-links{display:none}
+  .hero-name-row{flex-direction:column;gap:0.4rem}
+}
+</style>
 </head>
-<body class="text-white bg-black font-sans">
-  <nav class="sticky top-0 bg-black py-4 border-b border-gray-700 z-50">
-    <div class="max-w-4xl mx-auto flex justify-around text-base font-semibold">
-      <a href="index.html" class="hover:text-indigo-400">About</a>
-      <a href="publications.html" class="hover:text-indigo-400">Publications</a>
-      <a href="poetry.html" class="hover:text-indigo-400">Poetry</a>
-      <a href="volunteering.html" class="hover:text-indigo-400">Volunteering</a>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">RT</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#extras">Extra-Curricular</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <p class="hero-greeting">Hi, I'm</p>
+  <div class="hero-name-row">
+    <h1>Ram <em>Thangaraj</em></h1>
+    <span class="formal-name">(full name: Ramprabu)</span>
+  </div>
+  <p class="hero-sub">I study how people plan for death — and what they hope to leave behind. My research focuses on older adults, digital legacy, and end-of-life design in HCI.</p>
+  <div class="ctas">
+    <a href="#publications" class="btn btn-p">View Selected Publications</a>
+    <a href="#research" class="btn btn-s">My Work at a Glance</a>
+    <a href="Ram_Thangaraj_CV_April 2026.pdf" class="btn btn-s" id="cv-btn">Download CV ↓</a>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- ABOUT -->
+<section id="about">
+  <span class="sec-label">About</span>
+  <h2>Researcher. Former Consultant. Curious Person.</h2>
+  <div class="about-grid">
+    <div>
+      <p>I am a third-year PhD candidate in Human-Computer Interaction at the New Jersey Institute of Technology, advised by <a href="https://www.njit.edu/cs/faculty/alisha-pradhan" target="_blank">Dr. Alisha Pradhan</a>. My research sits at the intersection of aging, death, and design — specifically, how older adults navigate end-of-life planning, digital legacy, and remembrance.</p>
+      <p>I use qualitative methods — in-depth interviews and co-design — to understand how people think about identity, legacy, and the traces they leave behind. My work asks: how do people plan for the version of themselves that persists after death? Who do they imagine remembering them, and through what artifacts? My research has appeared at top HCI venues including ACM DIS and CHI, with a <strong>Best Paper Award at CHI 2026</strong>.</p>
+      <p>I am also interested in how South Asian users navigate identity expression through digital media — including emoji skin tone modifiers. This work examines how culturally embedded norms around skin complexion, such as colourism in the Indian context, shape choices in digital communication and raises broader questions about what it means to design for representation.</p>
+      <p>Before the PhD, I spent over four years as a management consultant at Ernst &amp; Young LLP in India. I worked primarily in healthcare and oil &amp; gas supply chains — helping healthcare systems reduce procurement costs for medicines and consumables, and optimizing labor productivity through technology and process interventions. That experience shaped how I approach research: with an eye for systems, an instinct for stakeholder complexity, and a belief that design problems are rarely solved by design alone.</p>
+      <p>I hold an MSc in User Experience Design from Birmingham City University (UK) and a B.Tech in Naval Architecture and Ocean Engineering from IIT Madras.</p>
+      <p>Outside the lab, I write and perform poetry, play the ukulele and keyboard, have recently taken up acrylic painting, and am learning salsa dancing with my partner.</p>
+      <div class="tags">
+        <span class="tag">End-of-Life Planning</span>
+        <span class="tag">Digital Legacy</span>
+        <span class="tag">Older Adults</span>
+        <span class="tag">Qualitative HCI</span>
+        <span class="tag">Remembrance &amp; Death</span>
+        <span class="tag">South Asian Identity</span>
+        <span class="tag">Co-design</span>
+        <span class="tag">CSCW</span>
+      </div>
     </div>
-  </nav>
-  <div class="max-w-3xl mx-auto px-6 py-12">
-    <div class="flex items-center space-x-4 mb-6">
-      <img src="profile.jpg" alt="Profile" class="w-24 h-24 rounded-full border border-gray-500" />
-      <div>
-        <h1 class="text-3xl font-bold">Ramprabu Thangaraj</h1>
-        <p class="text-sm text-gray-300">PhD Student in Information Systems, NJIT</p>
-        <p class="text-sm">✉️ <a href="mailto:raminthestates@gmail.com" class="text-indigo-400 underline">raminthestates@gmail.com</a> &nbsp; | &nbsp;
-        <a href="https://scholar.google.com/citations?user=7n9fc64AAAAJ&hl=en&oi=ao" class="text-indigo-400 underline">Google Scholar</a></p>
+    <div>
+      <div class="photo-wrap">
+        <img src="https://thangarajram.com/profile.jpg" alt="Ram Thangaraj"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <p class="photo-placeholder" style="display:none">Photo unavailable</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- RESEARCH -->
+<section id="research">
+  <span class="sec-label">Research</span>
+  <h2>My Work at a Glance</h2>
+  <div class="r-grid">
+    <div class="r-card">
+      <span class="r-icon">&#10050;</span>
+      <h3>End-of-Life Planning &amp; Legacy</h3>
+      <p>How do people plan for the identity and memory they leave behind? I study how older adults think about post-mortem remembrance, curate physical and digital artifacts, and navigate their end-of-life data — and what all of this means for the design of legacy systems.</p>
+    </div>
+    <div class="r-card">
+      <span class="r-icon">&#9632;</span>
+      <h3>South Asian Identity &amp; Digital Media</h3>
+      <p>How do cultural norms around skin complexion shape how South Asian users express identity in digital spaces? I examine emoji skin tone modifier preferences among Indian-origin users, exploring the intersections of colourism, gender, and representation in computing.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <span class="sec-label">Publications</span>
+  <h2>Selected Work</h2>
+  <div class="pub-list">
+
+    <div class="pub">
+      <div class="badges">
+        <span class="badge b-award">★ Best Paper Award</span>
+        <span class="badge b-venue">CHI 2026</span>
+      </div>
+      <div class="pub-title">Crafting Remembrance Beyond the Self: Older Adults' Digital and Material Legacies</div>
+      <div class="pub-authors"><span class="me">Ramprabu Thangaraj</span>, Jed R. Brubaker, Emma Dixon, Alisha Pradhan</div>
+      <div class="pub-meta">In Proceedings of CHI '26, April 13–17, 2026, Barcelona, Spain. ACM.</div>
+      <div class="pub-links">
+        <a href="https://doi.org/10.1145/3772318.3791813" target="_blank" class="pub-link">DOI ↗</a>
       </div>
     </div>
 
+    <div class="pub">
+      <div class="badges">
+        <span class="badge b-venue">DIS 2025</span>
+      </div>
+      <div class="pub-title">"That's something that as a senior person you have to consider now": Unpacking Older Adults' Preferences for End-of-Life Data Planning</div>
+      <div class="pub-authors"><span class="me">Ramprabu Thangaraj</span>, Jed R. Brubaker, Nathan Malkin, Alisha Pradhan</div>
+      <div class="pub-meta">In Proceedings of DIS '25, July 5–9, 2025, Funchal, Portugal. ACM.</div>
+      <div class="pub-links">
+        <a href="https://doi.org/10.1145/3715336.3735821" target="_blank" class="pub-link">DOI ↗</a>
+      </div>
+    </div>
 
-    <section class="bg-gray-900 rounded-xl p-6 shadow-inner">
-      <h2 class="text-2xl font-bold mb-4">About Me</h2>
-      <p class="text-sm mb-4">
-      I’m a PhD student in Human-Computer Interaction at NJIT, advised by Dr. Alisha Pradhan. I study how older adults navigate questions around <strong> digital legacy, remembrance, and end-of-life planning</strong>. My research often involves <strong>co-design workshops and interviews </strong>with adults aged 65 and above. I’m also exploring how South Asian users express identity through digital media like emoji skin tone modifiers and GIFs, using a mix of qualitative and quantitative methods to uncover user needs and co-design meaningful interventions.
-      </p>
-      <p class="text-sm mb-4">
-        Prior to moving to the U.S. for my PhD, I completed my Master’s in User Experience Design at Birmingham City University (UK).
-        I also worked as a management consultant (healthcare and oil & gas supply chain optimization) at Ernst and Young LLP (EY) in India for over four and a half years.
-        Before joining EY, I completed my Bachelor’s in Naval Architecture and Ocean Engineering at the Indian Institute of Technology Madras (IIT Madras- India).
-      </p>
-      <p class="text-sm">
-        In my free time, I like to volunteer/organize workshops for helping seniors and returning citizens with technology, write poetry (recently published my poetry collection), perform poetry at open mics,
-        and play a few musical instruments (ukulele, drums, and keyboard). Recently, I started exploring acrylic painting, mainly still life subjects.
-      </p>
-    </section>
+    <div class="pub">
+      <div class="badges">
+        <span class="badge b-venue">BCS HCI 2025</span>
+      </div>
+      <div class="pub-title">Digital Colourism? Understanding Emoji Skin Tone Preferences Among Indian-Origin Users</div>
+      <div class="pub-authors"><span class="me">Ramprabu Thangaraj</span>, Jinan Hussain, Tongxin Li, Sayan Sarcar, Alisha Pradhan</div>
+      <div class="pub-meta">In Proceedings of BCS HCI 2025, UK.</div>
+      <div class="pub-links">
+        <a href="http://dx.doi.org/10.14236/ewic/BCSHCI2025.65" target="_blank" class="pub-link">DOI ↗</a>
+      </div>
+    </div>
+
   </div>
+</section>
+
+<hr class="div">
+
+<!-- BLOG -->
+<section id="blog">
+  <span class="sec-label">Blog</span>
+  <h2>Writing About My Work</h2>
+  <div class="blog-grid">
+
+    <div class="blog-card">
+      <div class="bc-head">
+        <div class="blog-date">April 2026 &nbsp;·&nbsp; CHI '26</div>
+        <h3 class="bc-title">Who Gets to Decide How You Are Remembered?</h3>
+      </div>
+      <div class="bc-body">
+        <p class="bc-excerpt">When we started asking older adults how they wanted to be remembered after death, we expected them to talk about themselves. What we got was something far more interesting.</p>
+        <button class="read-more" onclick="togglePost(this)">Read more ↓</button>
+      </div>
+      <div class="blog-full">
+        <p>This post is about our CHI 2026 Best Paper: <em>Crafting Remembrance Beyond the Self</em>. It is also about a surprise.</p>
+        <h4>The assumption we started with</h4>
+        <p>When you study end-of-life planning, it is easy to assume people are primarily concerned with how <em>they</em> will be remembered. Their own story, their own image, their own legacy. That was our starting assumption when we began interviewing 14 older adults about their digital and material artifacts.</p>
+        <p>We were wrong — or at least, incomplete.</p>
+        <h4>What older adults actually told us</h4>
+        <p>As participants engaged in imagining their post-mortem selves, the subject of remembrance kept expanding beyond the individual. Connie wanted to preserve her own memories, yes — but also her father's World War II footage and her grandfather's newspaper clipping from a small town in Louisiana. Sue showed us drawings made by her granddaughters, and told us the artifacts mattered not because of what they said about her, but because her granddaughters might one day look at them to remember <em>themselves</em>.</p>
+        <p>Individuals weren't just planning their own legacy. They were positioning themselves as one link in a generational chain — holding their ancestors and their descendants in the same breath.</p>
+        <h4>The role of artifacts</h4>
+        <p>Artifacts emerged as central to this work — not just as passive containers, but as active mediators of meaning. A driver's license spanning 20 years became a record of gradual aging. A collection of emails from "different times in my life" became a temporal archive. A breadbasket from a grandparent's generation embodied a relational history that no digital record could replicate.</p>
+        <p>Participants were also navigating physical-versus-digital storage with real care. Physical artifacts felt like anchors to the past — handwriting brings "[ancestors] closer to you," one participant told us. But digital formats offered longevity and searchability. One participant wanted to store digitized artifacts in a bank vault alongside her grandmother's jewelry, treating data as heirloom.</p>
+        <h4>What this means for design</h4>
+        <p>Current legacy platforms assume a single subject of remembrance: the deceased. Our work suggests the subject is more plural, more fluid, more generationally entangled. Design needs to account for narrative ecosystems where past, present, and future memories co-exist — not a single linear story, but a web of intertwined lives.</p>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="bc-head">
+        <div class="blog-date">July 2025 &nbsp;·&nbsp; DIS '25</div>
+        <h3 class="bc-title">Your Data Will Outlive You. Have You Thought About That?</h3>
+      </div>
+      <div class="bc-body">
+        <p class="bc-excerpt">Almost nobody we interviewed had thought about what happens to their data when they die — even the ones who had already written wills.</p>
+        <button class="read-more" onclick="togglePost(this)">Read more ↓</button>
+      </div>
+      <div class="blog-full">
+        <p>This post is about our DIS 2025 paper on older adults' preferences for end-of-life data planning.</p>
+        <h4>A blind spot in end-of-life planning</h4>
+        <p>We interviewed 16 older adults — all frequent users of digital technology — about what they wanted to happen to their data after they died. Seven had already done some form of end-of-life planning: writing wills, appointing heirs, identifying executors. And yet, when we asked about their digital data specifically, almost none had thought about it. One participant had just attended an end-of-life planning workshop. Data wasn't mentioned once in the curriculum.</p>
+        <p>This gap felt significant. These are people with iPhones, Facebook profiles, fitness trackers, Gmail accounts — decades of accumulated digital life — and yet their planning instincts stopped at the physical world.</p>
+        <h4>What surprised us</h4>
+        <p>Once prompted, participants had remarkably nuanced preferences. Health data generated unexpected enthusiasm: multiple participants wanted their medical histories and fitness data donated for research — imagining it as a gift to future generations. One participant, an avid marathon runner, wanted his step counts and heart rate data to help researchers understand longevity. Another participant, who had documented his travels extensively through photographs, wanted his lifetime of photos donated to a historical archive.</p>
+        <p>Others were more cautious. Changing social norms worried several people: what reads as ordinary language today might look offensive to their children in twenty years. The inability to add context to old posts — to explain what a photo really meant — created real anxiety.</p>
+        <h4>Technology changes. Your data doesn't.</h4>
+        <p>One of the most striking themes was participants' awareness of technological obsolescence. These are people who watched floppy disks, VHS tapes, and CDs become irrelevant in their lifetimes. They were deeply skeptical about whether digital platforms would reliably preserve their data for decades. Some stored family photos on two cloud services simultaneously. Others were printing paper backups of important messages.</p>
+        <p>This is a design problem as much as a personal one. If people don't trust digital infrastructure to last long enough to matter, how do we build systems that are credibly durable?</p>
+      </div>
+    </div>
+
+    <div class="blog-card">
+      <div class="bc-head">
+        <div class="blog-date">2025 &nbsp;·&nbsp; BCS HCI</div>
+        <h3 class="bc-title">The Emoji You Pick Is Not Neutral — Especially If You're Indian</h3>
+      </div>
+      <div class="bc-body">
+        <p class="bc-excerpt">Emoji skin tone modifiers were designed to make digital communication more inclusive. For Indian users navigating colourism, the choice is more complicated than that.</p>
+        <button class="read-more" onclick="togglePost(this)">Read more ↓</button>
+      </div>
+      <div class="blog-full">
+        <p>This post is about our BCS HCI 2025 paper: <em>Digital Colourism? Understanding Emoji Skin Tone Preferences Among Indian-Origin Users</em>.</p>
+        <h4>Why this question matters</h4>
+        <p>When Unicode introduced skin tone modifiers for emoji in 2015, the goal was representation — to make these tiny images reflect human diversity rather than defaulting to a yellow "neutral." What research has since shown is that yellow carries meaning: it is widely associated with whiteness, not neutrality. Almost all of that research has been conducted with North American and European participants.</p>
+        <p>We wanted to understand what this looks like for Indian-origin users — a population for whom skin complexion is not just a personal trait but a socially charged one, shaped by centuries of colourism.</p>
+        <h4>What we found</h4>
+        <p>We surveyed 94 Indian-origin users. The most striking finding was gendered. Women — regardless of self-perceived skin tone — were significantly more likely to choose emoji skin tones matching their own and to place more importance on having diverse options. Men with lighter perceived skin tones were much more likely to default to yellow.</p>
+        <p>This makes sense in context. Colourism in South Asia disproportionately affects women — in marriage markets, workplaces, media. Women have more at stake in how skin tone is represented, even digitally. Yet they also navigate a tension: while women were more likely to associate social benefits with fair skin tones, they were more enthusiastic about representing their own skin tone authentically.</p>
+        <h4>Designing for "neutrality" is not neutral</h4>
+        <p>The yellow emoji default is often defended as neutral — a skin tone that belongs to nobody. But if yellow reads as white to many users, then defaulting to yellow is not neutrality; it is a choice that centres one identity over others. This is a preliminary study, and it opens questions that deserve more attention as HCI grapples with representation and what it means to design for everyone.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- EXTRA-CURRICULAR -->
+<section id="extras">
+  <span class="sec-label">Extra-Curricular</span>
+  <h2>Beyond the Lab</h2>
+  <div class="extra-grid">
+    <div class="extra-card">
+      <h3>Poetry &amp; Writing</h3>
+      <p>Published poet and open-mic performer.</p>
+    </div>
+    <div class="extra-card">
+      <h3>Music</h3>
+      <p>Ukulele, keyboard, and drums.</p>
+    </div>
+    <div class="extra-card">
+      <h3>Painting</h3>
+      <p>Acrylic painting, mostly still life.</p>
+    </div>
+    <div class="extra-card">
+      <h3>Salsa Dancing</h3>
+      <p>Learning with my partner.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- CONTACT -->
+<section id="contact">
+  <span class="sec-label">Contact</span>
+  <h2>Get in Touch</h2>
+  <p style="max-width:480px;margin:0 auto 0.5rem;text-align:center">Always happy to hear from you.</p>
+  <div class="contact-links">
+    <a href="mailto:rt499@njit.edu" class="c-link">&#9993;&nbsp; rt499@njit.edu</a>
+    <a href="https://scholar.google.com/citations?user=7n9fc64AAAAJ&hl=en" target="_blank" class="c-link">&#128214;&nbsp; Google Scholar</a>
+    <a href="https://thangarajram.com" target="_blank" class="c-link">&#127760;&nbsp; thangarajram.com</a>
+    <a href="Ram_Thangaraj_CV_April 2026.pdf" class="c-link" id="cv-contact-btn">&#128196;&nbsp; Download CV</a>
+  </div>
+</section>
+
+<footer>Co-created with <a href="https://claude.ai" target="_blank" style="color:var(--dim)">Claude AI</a></footer>
+
+<script>
+function togglePost(btn){
+  var card=btn.closest('.blog-card');
+  var full=card.querySelector('.blog-full');
+  var open=full.classList.toggle('open');
+  btn.textContent=open?'Close ↑':'Read more ↓';
+}
+</script>
 </body>
 </html>
